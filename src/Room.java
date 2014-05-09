@@ -75,9 +75,18 @@ public class Room
 	}
 	
 	public String[][] updateChessBoardInfo(String UserToken) /** 同步資訊問題   **/
-	{
+	{	
 		//實作 updateChessBoardInfo 當非該玩家時不要讓他更新棋盤 (做等待動作)
-		return chessBoard.getChessName();
+		String[][] chessName;
+		chessName = chessBoard.getChessName();
+		for(int i = 0; i < 4; i++) {
+			for(int j = 0; j < 8; j++) {
+				if(chessBoard.getChessBoard()[i][j].getCover() == false) {
+					chessName[i][j] = "Cover";
+				}
+			}
+		}
+		return chessName;
 	}
 	
 	public boolean chat(String UserToken,String msg)/** 同步資訊問題   **/

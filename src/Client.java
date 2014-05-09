@@ -21,12 +21,14 @@ public class Client {
 			System.out.println("connect A & B (rom num): " + roomNum);
 			System.out.println("A move chess : " + d.moveChess(roomNum, "123", 0, 0, 3, 3));
 			System.out.println("A update : ");
-			for (int i = 0; i < 10; i++) {
-				for (int j = 0; j < 9; j++) {
+			for (int i = 0; i < 4; i++) {
+				for (int j = 0; j < 8; j++) {
 					System.out.print(d.updateChessBoardInfo(roomNum, "123")[i][j] + " ");
 				}
 				System.out.println();
 			}
+			
+		
 		}catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

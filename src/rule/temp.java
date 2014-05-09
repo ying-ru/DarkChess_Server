@@ -6,7 +6,7 @@ import data.chessPiece.Chess;
  *炮可能在判斷是否可移動就被槓掉-----待解決 
  */
 public class temp {
-	Chess[][] chessBoard = new Chess[8][4];
+	Chess[][] chessBoard = new Chess[5][9];
 
 	public boolean moveRule(ChessBoard chessBoard1, int x, int y, int toX,
 			int toY) {

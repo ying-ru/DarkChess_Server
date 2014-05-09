@@ -129,7 +129,7 @@ public class RMIServerImpl extends UnicastRemoteObject implements ServerInterfac
 //		ActionSuccess = roomlist.get(getRoomIndex(roomNum)).openChess(UserToken,x, y);
 //		return ActionSuccess;
 //	}
-	public Chess[][] updateChessBoardInfo(int roomNum,String UserToken) 
+	public String[][] updateChessBoardInfo(int roomNum,String UserToken) 
 	{
 		return roomlist.get(getRoomIndex(roomNum)).updateChessBoardInfo(UserToken);
 	}

@@ -13,6 +13,6 @@ public String check(String APIToken,String SecretToken) throws java.rmi.RemoteEx
 	public int connect(String UserToken,String rivalToken) throws java.rmi.RemoteException;
 	public boolean moveChess(int roomNum,String UserToken,int xOfStart,int yOfStart,int xOfEnd,int yOfEnd) throws java.rmi.RemoteException;
 	//public boolean openChess(int roomNum,String UserToken,int x,int y) throws java.rmi.RemoteException;
-	public Chess[][] updateChessBoardInfo(int roomNum,String UserToken) throws java.rmi.RemoteException;
+	public String[][] updateChessBoardInfo(int roomNum,String UserToken) throws java.rmi.RemoteException;
 	public boolean chat(int roomNum,String UserToken,String msg) throws java.rmi.RemoteException;
 }

@@ -1,19 +1,15 @@
 package rule;
 import data.chessPiece.Chess;
 
-
-
 public class ChessBoard {
-	private int length;
-	private int width;
 	private Chess[][] chessBoard;
-
-	public ChessBoard(int length, int width) /** 棋盤初始 尚未實作 **/
+	private String[][] chessName;
+	
+	public ChessBoard() /** 棋盤初始 尚未實作 **/
 	{
-		this.length = length;
-		this.width = width;
-		chessBoard = new Chess[length][width];
 		Random random = new Random();//???
+		chessBoard = random.getChessBoard();
+		chessName = random.getChessName();
 	}
 
 	public Chess[][] getChessBoard() {
@@ -22,5 +18,9 @@ public class ChessBoard {
 
 	public Chess getChess(int x, int y) {
 		return chessBoard[y][x];
+	}
+	
+	public String[][] getChessName() {
+		return chessName;
 	}
 }

@@ -11,10 +11,13 @@ public class temp {
 	public boolean moveRule(ChessBoard chessBoard1, int x, int y, int toX,
 			int toY) {
 		this.chessBoard = chessBoard1.getChessBoard();
-		if (chessBoard[toY][toX].getCover() == false) { // 不確定取得棋子沒
+		if (x == toX && y == toY) { // 不確定取得棋子沒
 			// open
-			chessBoard[toY][toX].setCover(true);
-			return true;
+			if(chessBoard[y][x].getCover() == false){
+				chessBoard[y][x].setCover(true);
+				return true;
+			}
+			
 		} else { // 棋子是翻開的
 			// 炮另外處理
 			if (chessBoard[y][x].getName().equalsIgnoreCase("pawn")) {

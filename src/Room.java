@@ -5,7 +5,7 @@ import java.util.LinkedList;
 
 import data.chessPiece.Chess;
 import rule.ChessBoard;
-import rule.temp;
+import rule.Rule;
 /**  房間結束時回傳資料 以及刪除房間問題     **/
 public class Room 
 {
@@ -15,6 +15,7 @@ public class Room
 	private String player1UserToken;
 	private int nowPlay = 0;
 	private LinkedList<String> chatMsg = new LinkedList<String>();
+	Rule temp = new Rule();
 	
 	public Room(int roomNum,String player0UserToken,String player1UserToken) 
 	{
@@ -48,7 +49,7 @@ public class Room
 			// 實作 moveChess
 			if ((nowPlay == 0 && UserToken.equals(player0UserToken))
 					|| (nowPlay == 1 && UserToken.equals(player1UserToken))) {
-				temp temp = new temp();
+				//Rule temp = new Rule();
 				ActionSuccess = temp.moveRule(chessBoard, xOfStart, yOfStart,
 						xOfEnd, yOfEnd);
 			} else {// 玩家順序不對
@@ -58,6 +59,14 @@ public class Room
 			ActionSuccess = false ;
 		}
 		return ActionSuccess;
+	}
+	//判斷輸贏結果
+	public boolean result(int nowPlay){
+		if(temp.score(nowPlay) == 16){
+			return true;
+		}else{
+			return false;
+		}
 	}
 	
 //	public boolean openChess(String UserToken,int x,int y)

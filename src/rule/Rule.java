@@ -5,9 +5,10 @@ import data.chessPiece.Chess;
 /*
  *炮可能在判斷是否可移動就被槓掉-----待解決 
  */
-public class temp {
+public class Rule {
 	Chess[][] chessBoard = new Chess[5][9];
-
+	int player0= 0 ;
+	int player1= 0 ;
 	public boolean moveRule(ChessBoard chessBoard1, int x, int y, int toX,
 			int toY) {
 		this.chessBoard = chessBoard1.getChessBoard();
@@ -27,6 +28,11 @@ public class temp {
 					} else {
 						chessBoard[y][x].setX(toY);
 						chessBoard[y][x].setY(toX);
+						if(chessBoard[y][x].getColor() == 0){//0是紅色
+							player0++;
+						}else{//黑色
+							player1++;
+						}
 						return true;
 					}
 				} else {
@@ -55,6 +61,11 @@ public class temp {
 								chessBoard[toY][toX].setDead(true);
 								chessBoard[y][x].setX(toY);
 								chessBoard[y][x].setY(toX);
+								if(chessBoard[y][x].getColor() == 0){//0是紅色
+									player0++;
+								}else{//黑色
+									player1++;
+								}
 								return true;
 							}
 						} else {
@@ -81,6 +92,11 @@ public class temp {
 								chessBoard[toY][toX].setDead(true);
 								chessBoard[y][x].setX(toY);
 								chessBoard[y][x].setY(toX);
+								if(chessBoard[y][x].getColor() == 0){//0是紅色
+									player0++;
+								}else{//黑色
+									player1++;
+								}
 								return true;
 							} else {
 								if (chessBoard[toX][toY].getPriority() < chessBoard[y][x]
@@ -88,6 +104,11 @@ public class temp {
 									chessBoard[toX][toY].setDead(true);
 									chessBoard[y][x].setX(toY);
 									chessBoard[y][x].setY(toX);
+									if(chessBoard[y][x].getColor() == 0){//0是紅色
+										player0++;
+									}else{//黑色
+										player1++;
+									}
 									return true;
 								} else {
 									return false;
@@ -99,6 +120,13 @@ public class temp {
 			}
 		}
 		return false;//它加的QAQ
-
 	}
+	public int score(int nowPlay){
+		if(nowPlay == 0){
+			return player0;
+		}else{
+			return player1;
+		}
+	}
+	
 }

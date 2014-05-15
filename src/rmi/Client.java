@@ -1,3 +1,4 @@
+package rmi;
 
 
 
@@ -12,7 +13,7 @@ public class Client {
 		ServerInterface d = null;
 		try {
 			//c = new ChineseChessArithmeticRMIImpl();
-			d = (ServerInterface) Naming.lookup("rmi://127.0.0.1/arithmetic");
+			d = (ServerInterface) Naming.lookup("rmi://127.0.0.1/ChessGame");
 			System.out.println("check A : " + d.check("123", "201401"));
 			System.out.println("check B : " + d.check("456", "201402"));
 //			System.out.println("random connect A (rom num) : " + c.connect("123"));

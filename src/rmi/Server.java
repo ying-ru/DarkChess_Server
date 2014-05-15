@@ -1,3 +1,4 @@
+package rmi;
 
 
 import java.rmi.Naming;
@@ -13,7 +14,7 @@ public class Server {
 			{
 				RMIServerImpl name = new RMIServerImpl();
 				System.out.println("Registering ...");
-				Naming.rebind("arithmetic", name);	// arithmetic is the name of the service
+				Naming.rebind("ChessGame", name);	// the name of the service
 				System.out.println("Register success");
 			}
 			catch(Exception e)

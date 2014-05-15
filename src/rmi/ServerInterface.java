@@ -1,6 +1,7 @@
+package rmi;
 
 import java.rmi.Remote;
-import data.chessPiece.Chess;
+
 import data.player.Player;
 
 public interface ServerInterface extends Remote{
@@ -15,4 +16,7 @@ public String check(String APIToken,String SecretToken) throws java.rmi.RemoteEx
 	//public boolean openChess(int roomNum,String UserToken,int x,int y) throws java.rmi.RemoteException;
 	public String[][] updateChessBoardInfo(int roomNum,String UserToken) throws java.rmi.RemoteException;
 	public boolean chat(int roomNum,String UserToken,String msg) throws java.rmi.RemoteException;
+	public boolean isTurnUser(int roomNum,String UserToken) throws java.rmi.RemoteException;
+	public boolean hasNewMsg(int roomNum) throws java.rmi.RemoteException;
+	public String updateChat(int roomNum) throws java.rmi.RemoteException;
 }

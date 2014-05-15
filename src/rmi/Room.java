@@ -1,9 +1,9 @@
+package rmi;
 
 
-import java.awt.Image;
+import java.rmi.RemoteException;
 import java.util.LinkedList;
 
-import data.chessPiece.Chess;
 import rule.ChessBoard;
 import rule.Rule;
 /**  房間結束時回傳資料 以及刪除房間問題     **/
@@ -15,6 +15,7 @@ public class Room
 	private String player1UserToken;
 	private int nowPlay = 0;
 	private LinkedList<String> chatMsg = new LinkedList<String>();
+	private boolean hasNewMsg = true;
 	Rule temp = new Rule();
 	
 	public Room(int roomNum,String player0UserToken,String player1UserToken) 
@@ -102,6 +103,33 @@ public class Room
 	{
 		boolean ActionSuccess = false ;
 		//實作 chat 當某一方玩家使用此method 需通知另一方玩家更新
+		
+		chatMsg.add(UserToken + " > " + msg);
 		return ActionSuccess;
+	}
+	
+	public boolean isTurnUser(String UserToken)
+			throws RemoteException {
+		// TODO Auto-generated method stub
+		boolean turnUser = (nowPlay == 0 && UserToken.equals(player0UserToken)) || (nowPlay == 1 && UserToken.equals(player1UserToken));
+		return turnUser;
+	}
+	
+	public String updateChat()
+			throws RemoteException {
+		// TODO Auto-generated method stub
+		String msg;
+		msg = "";
+		if (hasNewMsg()) {
+			msg = chatMsg.removeFirst();
+		}
+		return msg;
+	}
+	
+	public boolean hasNewMsg()
+			throws RemoteException {
+		// TODO Auto-generated method stub
+		boolean hasNewMsg = !(chatMsg.isEmpty());
+		return hasNewMsg;
 	}
 }

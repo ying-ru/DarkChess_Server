@@ -42,11 +42,11 @@ public class RMIServerImpl extends UnicastRemoteObject implements
 		return strDate;
 	}
 
-	public int connect(String UserToken)// 隨機配對
+	public int connect(String userToken)// 隨機配對
 	{
 		String rivalToken = "";
 		if (waitingPlayer.isEmpty()) {
-			waitingPlayer.put(UserToken, -1);
+			waitingPlayer.put(userToken, -1);
 			return -1;
 		} else {
 			for (String key : waitingPlayer.keySet()) {
@@ -57,7 +57,7 @@ public class RMIServerImpl extends UnicastRemoteObject implements
 				}
 			}
 			// 隨機找尋等待玩家清單中的人
-			Room room = new Room(roomNum, UserToken, rivalToken);
+			Room room = new Room(roomNum, userToken, rivalToken);
 			roomNum++;
 			roomlist.add(room);
 			return room.getRoomNum();
@@ -89,9 +89,9 @@ public class RMIServerImpl extends UnicastRemoteObject implements
 		return p;
 	}
 
-	public int connect(String UserToken, String rivalToken)// 選擇玩家
+	public int connect(String userToken, String rivalToken)// 選擇玩家
 	{
-		Room room = new Room(roomNum, UserToken, rivalToken);
+		Room room = new Room(roomNum, userToken, rivalToken);
 		roomNum++;
 		roomlist.add(room);
 		waitingPlayer.put(rivalToken, roomNum);
@@ -111,38 +111,38 @@ public class RMIServerImpl extends UnicastRemoteObject implements
 		return roomIndex;
 	}
 
-	public boolean moveChess(int roomNum, String UserToken, int xOfStart,
+	public boolean moveChess(int roomNum, String userToken, int xOfStart,
 			int yOfStart, int xOfEnd, int yOfEnd) {
 		boolean ActionSuccess = false;
 		ActionSuccess = roomlist.get(getRoomIndex(roomNum)).moveChess(roomNum,
-				UserToken, xOfStart, yOfStart, xOfEnd, yOfEnd);
+				userToken, xOfStart, yOfStart, xOfEnd, yOfEnd);
 		return ActionSuccess;
 	}
 
-	// public boolean openChess(int roomNum,String UserToken,int x,int y)
+	// public boolean openChess(int roomNum,String userToken,int x,int y)
 	// {
 	// boolean ActionSuccess = false ;
 	// ActionSuccess =
-	// roomlist.get(getRoomIndex(roomNum)).openChess(UserToken,x, y);
+	// roomlist.get(getRoomIndex(roomNum)).openChess(userToken,x, y);
 	// return ActionSuccess;
 	// }
-	public String[][] updateChessBoardInfo(int roomNum, String UserToken) {
+	public String[][] updateChessBoardInfo(int roomNum, String userToken) {
 		return roomlist.get(getRoomIndex(roomNum)).updateChessBoardInfo(
-				UserToken);
+				userToken);
 	}
 
-	public boolean chat(int roomNum, String UserToken, String msg) {
+	public boolean chat(int roomNum, String userToken, String msg) {
 		boolean ActionSuccess = false;
 		ActionSuccess = roomlist.get(getRoomIndex(roomNum))
-				.chat(UserToken, msg);
+				.chat(userToken, msg);
 		return ActionSuccess;
 	}
 
 	@Override
-	public boolean isTurnUser(int roomNum, String UserToken)
+	public boolean isTurnUser(int roomNum, String userToken)
 			throws RemoteException {
 		// TODO Auto-generated method stub
-		return roomlist.get(getRoomIndex(roomNum)).isTurnUser(UserToken);
+		return roomlist.get(getRoomIndex(roomNum)).isTurnUser(userToken);
 	}
 
 	@Override
@@ -157,5 +157,17 @@ public class RMIServerImpl extends UnicastRemoteObject implements
 			throws RemoteException {
 		// TODO Auto-generated method stub
 		return roomlist.get(getRoomIndex(roomNum)).hasNewMsg();
+	}
+
+	@Override
+	public int getScore(int roomNum, String userToken) throws RemoteException {
+		// TODO Auto-generated method stub
+		return roomlist.get(getRoomIndex(roomNum)).getScore(userToken);
+	}
+
+	@Override
+	public boolean isWin(int roomNum, String userToken) throws RemoteException {
+		// TODO Auto-generated method stub
+		return roomlist.get(getRoomIndex(roomNum)).isWin(userToken);
 	}
 }

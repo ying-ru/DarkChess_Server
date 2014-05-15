@@ -62,12 +62,22 @@ public class Room
 		return ActionSuccess;
 	}
 	//§PÂ_¿éÄ¹µ²ªG
-	public boolean result(int nowPlay){
-		if(temp.score(nowPlay) == 16){
+	public boolean isWin(String userToken) {
+		if (getScore(userToken) == 16) {
 			return true;
-		}else{
+		} else {
 			return false;
 		}
+	}
+	
+	public int getScore(String userToken) {
+		int player;
+		if (userToken.equals(player0UserToken)) {
+			player = 0;
+		} else {
+			player = 1;
+		}
+		return temp.score(player);
 	}
 	
 //	public boolean openChess(String UserToken,int x,int y)

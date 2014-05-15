@@ -19,4 +19,6 @@ public String check(String APIToken,String SecretToken) throws java.rmi.RemoteEx
 	public boolean isTurnUser(int roomNum,String UserToken) throws java.rmi.RemoteException;
 	public boolean hasNewMsg(int roomNum) throws java.rmi.RemoteException;
 	public String updateChat(int roomNum) throws java.rmi.RemoteException;
+	public int getScore(int roomNum,String UserToken) throws java.rmi.RemoteException;
+	public boolean isWin(int roomNum,String UserToken) throws java.rmi.RemoteException;
 }

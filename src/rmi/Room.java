@@ -6,7 +6,7 @@ import java.util.LinkedList;
 
 import rule.ChessBoard;
 import rule.Rule;
-/**  ©Ğ¶¡µ²§ô®É¦^¶Ç¸ê®Æ ¥H¤Î§R°£©Ğ¶¡°İÃD     **/
+/**  æˆ¿é–“çµæŸæ™‚å›å‚³è³‡æ–™ ä»¥åŠåˆªé™¤æˆ¿é–“å•é¡Œ     **/
 public class Room 
 {
 	int roomNum;
@@ -21,7 +21,7 @@ public class Room
 	public Room(int roomNum,String player0UserToken,String player1UserToken) 
 	{
 		this.roomNum = roomNum;
-		this.chessBoard = new ChessBoard(); /**  ¨â­Ó´Ñ½L¤£¦P  **/
+		this.chessBoard = new ChessBoard(); /**  å…©å€‹æ£‹ç›¤ä¸åŒ  **/
 		this.player0UserToken = player0UserToken;
 		this.player1UserToken = player1UserToken;
 	}
@@ -38,22 +38,22 @@ public class Room
 		return player1UserToken;
 	}
 	
-	private void changePlayer() //§ïÅÜ²{¦bª±®a
+	private void changePlayer() //æ”¹è®Šç¾åœ¨ç©å®¶
 	{
 		nowPlay = ( nowPlay + 1 ) % 2;
 	}
 	
-	public boolean moveChess(int roomNum , String UserToken,int xOfStart,int yOfStart,int xOfEnd,int yOfEnd)//¦^¶Ç«¬ºAÅÜ¤Æ
+	public boolean moveChess(int roomNum , String UserToken,int xOfStart,int yOfStart,int xOfEnd,int yOfEnd)//å›å‚³å‹æ…‹è®ŠåŒ–
 	{
 		boolean ActionSuccess = false;
-		if (this.roomNum == roomNum) {//½T»{©Ğ¶¡½s¸¹?
-			// ¹ê§@ moveChess
+		if (this.roomNum == roomNum) {//ç¢ºèªæˆ¿é–“ç·¨è™Ÿ?
+			// å¯¦ä½œ moveChess
 			if ((nowPlay == 0 && UserToken.equals(player0UserToken))
 					|| (nowPlay == 1 && UserToken.equals(player1UserToken))) {
 				//Rule temp = new Rule();
 				ActionSuccess = temp.moveRule(chessBoard, xOfStart, yOfStart,
 						xOfEnd, yOfEnd);
-			} else {// ª±®a¶¶§Ç¤£¹ï
+			} else {// ç©å®¶é †åºä¸å°
 				ActionSuccess = false;
 			}
 		}else{
@@ -61,7 +61,7 @@ public class Room
 		}
 		return ActionSuccess;
 	}
-	//§PÂ_¿éÄ¹µ²ªG
+	//åˆ¤æ–·è¼¸è´çµæœ
 	public boolean isWin(String userToken) {
 		if (getScore(userToken) == 16) {
 			return true;
@@ -83,7 +83,7 @@ public class Room
 //	public boolean openChess(String UserToken,int x,int y)
 //	{
 //		boolean ActionSuccess = false ;
-//		//¹ê§@ openChess
+//		//å¯¦ä½œ openChess
 //		
 //		return ActionSuccess;
 //	}
@@ -94,9 +94,9 @@ public class Room
 		return hasChess;
 	}
 	
-	public String[][] updateChessBoardInfo(String UserToken) /** ¦P¨B¸ê°T°İÃD   **/
+	public String[][] updateChessBoardInfo(String UserToken) /** åŒæ­¥è³‡è¨Šå•é¡Œ   **/
 	{	
-		//¹ê§@ updateChessBoardInfo ·í«D¸Óª±®a®É¤£­nÅı¥L§ó·s´Ñ½L (°µµ¥«İ°Ê§@)
+		//å¯¦ä½œ updateChessBoardInfo ç•¶éè©²ç©å®¶æ™‚ä¸è¦è®“ä»–æ›´æ–°æ£‹ç›¤ (åšç­‰å¾…å‹•ä½œ)
 		String[][] chessName;
 		chessName = chessBoard.getChessName();
 		for(int i = 0; i < 4; i++) {
@@ -109,10 +109,10 @@ public class Room
 		return chessName;
 	}
 	
-	public boolean chat(String UserToken,String msg)/** ¦P¨B¸ê°T°İÃD   **/
+	public boolean chat(String UserToken,String msg)/** åŒæ­¥è³‡è¨Šå•é¡Œ   **/
 	{
 		boolean ActionSuccess = false ;
-		//¹ê§@ chat ·í¬Y¤@¤èª±®a¨Ï¥Î¦¹method »İ³qª¾¥t¤@¤èª±®a§ó·s
+		//å¯¦ä½œ chat ç•¶æŸä¸€æ–¹ç©å®¶ä½¿ç”¨æ­¤method éœ€é€šçŸ¥å¦ä¸€æ–¹ç©å®¶æ›´æ–°
 		
 		chatMsg.add(UserToken + " > " + msg);
 		return ActionSuccess;

@@ -1,11 +1,11 @@
 package data.chessPiece;
 
 public class Chess{
-	private int color;//0¬°¬õ 
+	private int color;//0ç‚ºç´… 
 	private boolean cover;
 	private boolean dead;
 	private String name;
-	private int priority;//Åv­«§PÂ_
+	private int priority;//æ¬Šé‡åˆ¤æ–·
 	private int x;
 	private int y;
 	

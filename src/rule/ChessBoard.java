@@ -5,7 +5,7 @@ public class ChessBoard {
 	private Chess[][] chessBoard;
 	private String[][] chessName;
 	
-	public ChessBoard() /** ´Ñ½Lªì©l ©|¥¼¹ê§@ **/
+	public ChessBoard() /** æ£‹ç›¤åˆå§‹ å°šæœªå¯¦ä½œ **/
 	{
 		Random random = new Random();//???
 		chessBoard = random.getChessBoard();

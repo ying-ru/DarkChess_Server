@@ -17,10 +17,10 @@ public class RMIServerImpl extends UnicastRemoteObject implements
 	private int roomNum = 0;
 	private LinkedList<Room> roomlist = new LinkedList<Room>();
 	// private LinkedList<String> waitingPlayer = new LinkedList<String>();/**
-	// §ÎºA­n§ï¹L? **/
+	// å½¢æ…‹è¦æ”¹é? **/
 
 	private HashMap<String, Integer> waitingPlayer = new HashMap<String, Integer>();
-	private LinkedList<Player> online = new LinkedList<Player>();// ¬ö¿ı¨C­Óª±®aÄİ©ó­ş­Ó©Ğ¶¡
+	private LinkedList<Player> online = new LinkedList<Player>();// ç´€éŒ„æ¯å€‹ç©å®¶å±¬æ–¼å“ªå€‹æˆ¿é–“
 
 	// This implementation must have a public constructor.
 	// The constructor throws a RemoteException.
@@ -34,7 +34,7 @@ public class RMIServerImpl extends UnicastRemoteObject implements
 		return startTime;
 	}
 
-	// ¥H¤U¬°¼g§¹ªºmethod
+	// ä»¥ä¸‹ç‚ºå¯«å®Œçš„method
 	private String getDateTime() {
 		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
 		Date date = new Date();
@@ -42,7 +42,7 @@ public class RMIServerImpl extends UnicastRemoteObject implements
 		return strDate;
 	}
 
-	public int connect(String userToken)// ÀH¾÷°t¹ï
+	public int connect(String userToken)// éš¨æ©Ÿé…å°
 	{
 		String rivalToken = "";
 		if (waitingPlayer.isEmpty()) {
@@ -56,7 +56,7 @@ public class RMIServerImpl extends UnicastRemoteObject implements
 					break;
 				}
 			}
-			// ÀH¾÷§ä´Mµ¥«İª±®a²M³æ¤¤ªº¤H
+			// éš¨æ©Ÿæ‰¾å°‹ç­‰å¾…ç©å®¶æ¸…å–®ä¸­çš„äºº
 			Room room = new Room(roomNum, userToken, rivalToken);
 			roomNum++;
 			roomlist.add(room);
@@ -66,7 +66,7 @@ public class RMIServerImpl extends UnicastRemoteObject implements
 	}
 
 	public int getRoomNum(String userToken) {
-		// ¦pªGÁÙ¨S¦³©Ğ¶¡ ´N¤@ª½¦^¶Ç-1
+		// å¦‚æœé‚„æ²’æœ‰æˆ¿é–“ å°±ä¸€ç›´å›å‚³-1
 		int roomNum = waitingPlayer.get(userToken);
 		if (roomNum != -1) {
 			waitingPlayer.remove(userToken);
@@ -74,7 +74,7 @@ public class RMIServerImpl extends UnicastRemoteObject implements
 		return roomNum;
 	}
 
-	// °t¹ï¦¨¥\«á ¹ï¤â1¨ú±o¹ï¤âªºToken
+	// é…å°æˆåŠŸå¾Œ å°æ‰‹1å–å¾—å°æ‰‹çš„Token
 	public String getRivalToken(int roomNum) {
 		return roomlist.get(getRoomIndex(roomNum)).getPlayer0UserToken();
 	}
@@ -89,18 +89,18 @@ public class RMIServerImpl extends UnicastRemoteObject implements
 		return p;
 	}
 
-	public int connect(String userToken, String rivalToken)// ¿ï¾Üª±®a
+	public int connect(String userToken, String rivalToken)// é¸æ“‡ç©å®¶
 	{
 		Room room = new Room(roomNum, userToken, rivalToken);
 		roomNum++;
 		roomlist.add(room);
 		waitingPlayer.put(rivalToken, roomNum);
 
-		// µ¹¤@­ÓRoomNumber
+		// çµ¦ä¸€å€‹RoomNumber
 		return room.getRoomNum();
 	}
 
-	private int getRoomIndex(int roomNum)// §ä¨ì¹ê»Úªº¦ì§}
+	private int getRoomIndex(int roomNum)// æ‰¾åˆ°å¯¦éš›çš„ä½å€
 	{
 		int roomIndex = -1;
 		for (int i = 0; i < roomlist.size(); i++) {

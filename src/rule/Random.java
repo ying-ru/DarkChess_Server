@@ -3,7 +3,7 @@ package rule;
 import data.chessPiece.*;
 
 public class Random {
-	/* ¦^¶Ç«¬ºA */
+	/* å›å‚³å‹æ…‹ */
 	private int i, j, swap, randomA;
 	private String[][] chessName;
 	private Chess[][] chessBoard;
@@ -34,7 +34,7 @@ public class Random {
 
 		i = random[0] / 10;
 		j = random[0] % 10;
-		chessBoard[i][j] = new Cannon(0, false, false, "Cannon", i, j);// ¬õ¤j¬¶
+		chessBoard[i][j] = new Cannon(0, false, false, "Cannon", i, j);// ç´…å¤§ç‚®
 		chessName[i][j] = "RedCannon";
 		i = random[1] / 10;
 		j = random[1] % 10;
@@ -42,7 +42,7 @@ public class Random {
 		chessName[i][j] = "RedCannon";
 		i = random[2] / 10;
 		j = random[2] % 10;
-		chessBoard[i][j] = new Cannon(1, false, false, "Cannon", i, j);// ¶Â¤j¬¶
+		chessBoard[i][j] = new Cannon(1, false, false, "Cannon", i, j);// é»‘å¤§ç‚®
 		chessName[i][j] = "BlackCannon";
 		i = random[3] / 10;
 		j = random[3] % 10;
@@ -50,7 +50,7 @@ public class Random {
 		chessName[i][j] = "BlackCannon";
 		i = random[4] / 10;
 		j = random[4] % 10;
-		chessBoard[i][j] = new Horse(0, false, false, "Horse", i, j);// ¬õ°¨
+		chessBoard[i][j] = new Horse(0, false, false, "Horse", i, j);// ç´…é¦¬
 		chessName[i][j] = "RedHorse";
 		i = random[5] / 10;
 		j = random[5] % 10;
@@ -58,7 +58,7 @@ public class Random {
 		chessName[i][j] = "RedHorse";
 		i = random[6] / 10;
 		j = random[6] % 10;
-		chessBoard[i][j] = new Horse(1, false, false, "Horse", i, j);// ¶Â°¨
+		chessBoard[i][j] = new Horse(1, false, false, "Horse", i, j);// é»‘é¦¬
 		chessName[i][j] = "BlackHorse";
 		i = random[7] / 10;
 		j = random[7] % 10;
@@ -66,7 +66,7 @@ public class Random {
 		chessName[i][j] = "BlackHorse";
 		i = random[8] / 10;
 		j = random[8] % 10;
-		chessBoard[i][j] = new Elephant(0, false, false, "Elephant", i, j);// ¬õ¶H
+		chessBoard[i][j] = new Elephant(0, false, false, "Elephant", i, j);// ç´…è±¡
 		chessName[i][j] = "RedElephant";
 		i = random[9] / 10;
 		j = random[9] % 10;
@@ -74,7 +74,7 @@ public class Random {
 		chessName[i][j] = "RedElephant";
 		i = random[10] / 10;
 		j = random[10] % 10;
-		chessBoard[i][j] = new Elephant(1, false, false, "Elephant", i, j);// ¶Â¶H
+		chessBoard[i][j] = new Elephant(1, false, false, "Elephant", i, j);// é»‘è±¡
 		chessName[i][j] = "BlackElephant";
 		i = random[11] / 10;
 		j = random[11] % 10;
@@ -82,15 +82,15 @@ public class Random {
 		chessName[i][j] = "BlackElephant";
 		i = random[12] / 10;
 		j = random[12] % 10;
-		chessBoard[i][j] = new King(0, false, false, "King", i, j);// ¬õ«Ó
+		chessBoard[i][j] = new King(0, false, false, "King", i, j);// ç´…å¸¥
 		chessName[i][j] = "RedKing";
 		i = random[13] / 10;
 		j = random[13] % 10;
-		chessBoard[i][j] = new King(1, false, false, "King", i, j);// ¶Â±N
+		chessBoard[i][j] = new King(1, false, false, "King", i, j);// é»‘å°‡
 		chessName[i][j] = "BlackKing";
 		i = random[14] / 10;
 		j = random[14] % 10;
-		chessBoard[i][j] = new Pawn(0, false, false, "Pawn", i, j);// ¬õ§L
+		chessBoard[i][j] = new Pawn(0, false, false, "Pawn", i, j);// ç´…å…µ
 		chessName[i][j] = "RedPawn";
 		i = random[15] / 10;
 		j = random[15] % 10;
@@ -110,7 +110,7 @@ public class Random {
 		chessName[i][j] = "RedPawn";
 		i = random[19] / 10;
 		j = random[19] % 10;
-		chessBoard[i][j] = new Rook(0, false, false, "Rook", i, j);// ¬õ¨®
+		chessBoard[i][j] = new Rook(0, false, false, "Rook", i, j);// ç´…è»Š
 		chessName[i][j] = "RedRook";
 		i = random[20] / 10;
 		j = random[20] % 10;
@@ -118,7 +118,7 @@ public class Random {
 		chessName[i][j] = "RedRook";
 		i = random[21] / 10;
 		j = random[21] % 10;
-		chessBoard[i][j] = new Rook(1, false, false, "Rook", i, j);// ¶Â¨®
+		chessBoard[i][j] = new Rook(1, false, false, "Rook", i, j);// é»‘è»Š
 		chessName[i][j] = "BlackRook";
 		i = random[22] / 10;
 		j = random[22] % 10;
@@ -126,7 +126,7 @@ public class Random {
 		chessName[i][j] = "BlackRook";
 		i = random[23] / 10;
 		j = random[23] % 10;
-		chessBoard[i][j] = new Pawn(1, false, false, "Pawn", i, j);// ¶Â¨ò
+		chessBoard[i][j] = new Pawn(1, false, false, "Pawn", i, j);// é»‘å’
 		chessName[i][j] = "BlackPawn";
 		i = random[24] / 10;
 		j = random[24] % 10;
@@ -146,7 +146,7 @@ public class Random {
 		chessName[i][j] = "BlackPawn";
 		i = random[28] / 10;
 		j = random[28] % 10;
-		chessBoard[i][j] = new Warrior(0, false, false, "Warrior", i, j);// ¬õ¤h
+		chessBoard[i][j] = new Warrior(0, false, false, "Warrior", i, j);// ç´…å£«
 		chessName[i][j] = "RedWarrior";
 		i = random[29] / 10;
 		j = random[29] % 10;
@@ -154,7 +154,7 @@ public class Random {
 		chessName[i][j] = "RedWarrior";
 		i = random[30] / 10;
 		j = random[30] % 10;
-		chessBoard[i][j] = new Warrior(1, false, false, "Warrior", i, j);// ¶Â¤h
+		chessBoard[i][j] = new Warrior(1, false, false, "Warrior", i, j);// é»‘å£«
 		chessName[i][j] = "BlackWarrior";
 		i = random[31] / 10;
 		j = random[31] % 10;

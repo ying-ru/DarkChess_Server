@@ -3,7 +3,7 @@ package rule;
 import data.chessPiece.Chess;
 
 /*
- *¬¶¥i¯à¦b§PÂ_¬O§_¥i²¾°Ê´N³Qºb±¼-----«İ¸Ñ¨M 
+ *ç‚®å¯èƒ½åœ¨åˆ¤æ–·æ˜¯å¦å¯ç§»å‹•å°±è¢«æ§“æ‰-----å¾…è§£æ±º 
  */
 public class Rule {
 	Chess[][] chessBoard = new Chess[5][9];
@@ -12,25 +12,25 @@ public class Rule {
 	public boolean moveRule(ChessBoard chessBoard1, int x, int y, int toX,
 			int toY) {
 		this.chessBoard = chessBoard1.getChessBoard();
-		if (x == toX && y == toY) { // ¤£½T©w¨ú±o´Ñ¤l¨S
+		if (x == toX && y == toY) { // ä¸ç¢ºå®šå–å¾—æ£‹å­æ²’
 			// open
 			if(chessBoard[y][x].getCover() == false){
 				chessBoard[y][x].setCover(true);
 				return true;
 			}
 			
-		} else { // ´Ñ¤l¬OÂ½¶}ªº
-			// ¬¶¥t¥~³B²z
+		} else { // æ£‹å­æ˜¯ç¿»é–‹çš„
+			// ç‚®å¦å¤–è™•ç†
 			if (chessBoard[y][x].getName().equalsIgnoreCase("pawn")) {
 				if (chessBoard[toY][toX] == null) {
 					if (((Math.abs(x - toX)) + (Math.abs(y - toY))) > 1) {
-						return false;// ¤£¯à¨«
+						return false;// ä¸èƒ½èµ°
 					} else {
 						chessBoard[y][x].setX(toY);
 						chessBoard[y][x].setY(toX);
-						if(chessBoard[y][x].getColor() == 0){//0¬O¬õ¦â
+						if(chessBoard[y][x].getColor() == 0){//0æ˜¯ç´…è‰²
 							player0++;
-						}else{//¶Â¦â
+						}else{//é»‘è‰²
 							player1++;
 						}
 						return true;
@@ -42,14 +42,14 @@ public class Rule {
 					} else {
 						if ((Math.abs(x - toX) == 0)
 								|| (Math.abs(y - toY) == 0)) {
-							int count = 0;// ­pºâ¤¤¶¡¦³´XÁû´Ñ¤l
-							if (x == toX) {// y®y¼Ğ¤è¦V²¾°Ê
+							int count = 0;// è¨ˆç®—ä¸­é–“æœ‰å¹¾é¡†æ£‹å­
+							if (x == toX) {// yåº§æ¨™æ–¹å‘ç§»å‹•
 								for (int i = 0; i < Math.abs(y - toY); i++) {
 									if (chessBoard[i][x] != null) {
 										count++;
 									}
 								}
-							} else if (y == toY) {// x®y¼Ğ¤è¦V²¾°Ê
+							} else if (y == toY) {// xåº§æ¨™æ–¹å‘ç§»å‹•
 								for (int i = 0; i < Math.abs(x - toX); i++) {
 									if (chessBoard[y][i] != null) {
 										count++;
@@ -57,44 +57,44 @@ public class Rule {
 								}
 							}
 							if (count == 1) {
-								// ¦Y±¼
+								// åƒæ‰
 								chessBoard[toY][toX].setDead(true);
 								chessBoard[y][x].setX(toY);
 								chessBoard[y][x].setY(toX);
-								if(chessBoard[y][x].getColor() == 0){//0¬O¬õ¦â
+								if(chessBoard[y][x].getColor() == 0){//0æ˜¯ç´…è‰²
 									player0++;
-								}else{//¶Â¦â
+								}else{//é»‘è‰²
 									player1++;
 								}
 								return true;
 							}
 						} else {
-							return false;// ¬n¬nªº¦Y¤l
+							return false;// æ­ªæ­ªçš„åƒå­
 						}
 					}
 				}
 			} else {
 				if (((Math.abs(x - toX)) + (Math.abs(y - toY))) != 1) {
-					return false;// ¤£¯à¨«
+					return false;// ä¸èƒ½èµ°
 				} else {
-					// ¯à¨«ªº±¡ªp
-					if (chessBoard[toY][toX] == null) {// ±ı²¾°Ê¦ì¸m¨S¦³´Ñ¤l
+					// èƒ½èµ°çš„æƒ…æ³
+					if (chessBoard[toY][toX] == null) {// æ¬²ç§»å‹•ä½ç½®æ²’æœ‰æ£‹å­
 						chessBoard[y][x].setX(toY);
 						chessBoard[y][x].setY(toX);
-						return true;// §P©w¥i¥H²¾°Ê
-					} else {// ±ı²¾°Ê¦ì¸m¦³´Ñ¤l
+						return true;// åˆ¤å®šå¯ä»¥ç§»å‹•
+					} else {// æ¬²ç§»å‹•ä½ç½®æœ‰æ£‹å­
 						if (chessBoard[toY][toX].getColor() == chessBoard[y][x]
-								.getColor()) {// ´Ñ¤l¬O¦Û¤v¤H
+								.getColor()) {// æ£‹å­æ˜¯è‡ªå·±äºº
 							return false;
-						} else {// ´Ñ¤l¬O¼Ä¤H¶}©l§PÂ_Åv­«
+						} else {// æ£‹å­æ˜¯æ•µäººé–‹å§‹åˆ¤æ–·æ¬Šé‡
 							if ((chessBoard[y][x].getPriority() == 1)
 									&& (chessBoard[toY][toX].getPriority() == 7)) {
 								chessBoard[toY][toX].setDead(true);
 								chessBoard[y][x].setX(toY);
 								chessBoard[y][x].setY(toX);
-								if(chessBoard[y][x].getColor() == 0){//0¬O¬õ¦â
+								if(chessBoard[y][x].getColor() == 0){//0æ˜¯ç´…è‰²
 									player0++;
-								}else{//¶Â¦â
+								}else{//é»‘è‰²
 									player1++;
 								}
 								return true;
@@ -104,9 +104,9 @@ public class Rule {
 									chessBoard[toX][toY].setDead(true);
 									chessBoard[y][x].setX(toY);
 									chessBoard[y][x].setY(toX);
-									if(chessBoard[y][x].getColor() == 0){//0¬O¬õ¦â
+									if(chessBoard[y][x].getColor() == 0){//0æ˜¯ç´…è‰²
 										player0++;
-									}else{//¶Â¦â
+									}else{//é»‘è‰²
 										player1++;
 									}
 									return true;
@@ -119,7 +119,7 @@ public class Rule {
 				}
 			}
 		}
-		return false;//¥¦¥[ªºQAQ
+		return false;//å®ƒåŠ çš„QAQ
 	}
 	public int score(int nowPlay){
 		if(nowPlay == 0){

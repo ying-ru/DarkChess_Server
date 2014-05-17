@@ -1,7 +1,7 @@
 package data.chessPiece;
 
 public class Chess{
-	private int color;//0¬°¬õ
+	private int color;//0¬°¬õ 
 	private boolean cover;
 	private boolean dead;
 	private String name;

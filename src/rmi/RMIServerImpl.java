@@ -78,6 +78,8 @@ public class RMIServerImpl extends UnicastRemoteObject implements
 	public String getRivalToken(int roomNum) {
 		return roomlist.get(getRoomIndex(roomNum)).getPlayer0UserToken();
 	}
+	
+	
 
 	public Player getRivalData(String rivalToken) {
 		Player p = null;

@@ -12,18 +12,23 @@ public class Player
 	private int win,lose;
 	private DataBase dataBase = new DataBase();
 	
-	public Player 
+	public Player (String userToken) {
+		this.userToken = userToken;
+	}
 	
 	public String getUserToken() {
 		return userToken;
 	}
+	
 	public Image getPicture() {
 		return picture;
 	}
+	
 	public int getWin() {
 		win = dataBase.selectWin(userToken);
 		return win;
 	}
+	
 	public int getLose() {
 		lose = dataBase.selectLose(userToken);
 		return lose;

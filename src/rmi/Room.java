@@ -4,6 +4,7 @@ package rmi;
 import java.rmi.RemoteException;
 import java.util.LinkedList;
 
+import jdbc.DataBase;
 import rule.ChessBoard;
 import rule.Rule;
 /**  房間結束時回傳資料 以及刪除房間問題     **/
@@ -15,15 +16,16 @@ public class Room
 	private String player1UserToken;
 	private int nowPlay = 0;
 	private LinkedList<String> chatMsg = new LinkedList<String>();
-	private boolean hasNewMsg = true;
-	Rule temp = new Rule();
+	private DataBase dataBase;
+	private Rule temp = new Rule();
 	
-	public Room(int roomNum,String player0UserToken,String player1UserToken) 
+	public Room(int roomNum,String player0UserToken,String player1UserToken, DataBase dataBase) 
 	{
 		this.roomNum = roomNum;
 		this.chessBoard = new ChessBoard(); /**  兩個棋盤不同  **/
 		this.player0UserToken = player0UserToken;
 		this.player1UserToken = player1UserToken;
+		this.dataBase = dataBase;
 	}
 	
 	public int getRoomNum() {
@@ -59,11 +61,21 @@ public class Room
 		}else{
 			ActionSuccess = false ;
 		}
+		
+		if (ActionSuccess) {
+			changePlayer();
+		}
+		
 		return ActionSuccess;
 	}
+	
 	//判斷輸贏結果
 	public boolean isWin(String userToken) {
 		if (getScore(userToken) == 16) {
+			int win = dataBase.selectWin(userToken);
+			int lose = dataBase.selectLose(userToken);
+			win++;
+			dataBase.update(userToken, win, lose);
 			return true;
 		} else {
 			return false;

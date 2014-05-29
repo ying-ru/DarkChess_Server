@@ -7,15 +7,14 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 
+import jdbc.DataBase;
 import data.player.Player;
-
-//import ChineseChess.Player;
-//import ChineseChess.ChineseChessRoom;
 
 public class RMIServerImpl extends UnicastRemoteObject implements
 		ServerInterface {
 	private int roomNum = 0;
 	private LinkedList<Room> roomlist = new LinkedList<Room>();
+	private DataBase dataBase;
 	// private LinkedList<String> waitingPlayer = new LinkedList<String>();/**
 	// 形態要改過? **/
 
@@ -26,10 +25,11 @@ public class RMIServerImpl extends UnicastRemoteObject implements
 	// The constructor throws a RemoteException.
 	public RMIServerImpl() throws java.rmi.RemoteException {
 		super(); // Use constructor of parent class
+		dataBase = new DataBase();
 	}
-
+	
 	// Implementation of the service defended in the interface
-	public String check(String APIToken, String SecretToken) {
+	public String check(String APIToken, String SecretToken) { //if check fail?
 		String startTime = getDateTime();
 		return startTime;
 	}
@@ -44,6 +44,9 @@ public class RMIServerImpl extends UnicastRemoteObject implements
 
 	public int connect(String userToken)// 隨機配對
 	{
+		
+		Player user = new Player(userToken);
+		Player rival = new Player(userToken);
 		String rivalToken = "";
 		if (waitingPlayer.isEmpty()) {
 			waitingPlayer.put(userToken, -1);
@@ -57,12 +60,15 @@ public class RMIServerImpl extends UnicastRemoteObject implements
 				}
 			}
 			// 隨機找尋等待玩家清單中的人
-			Room room = new Room(roomNum, userToken, rivalToken);
+			Room room = new Room(roomNum, userToken, rivalToken, dataBase);
 			roomNum++;
 			roomlist.add(room);
+			
+			online.add(user);
+			online.add(rival);
+			
 			return room.getRoomNum();
 		}
-
 	}
 
 	public int getRoomNum(String userToken) {
@@ -93,11 +99,11 @@ public class RMIServerImpl extends UnicastRemoteObject implements
 
 	public int connect(String userToken, String rivalToken)// 選擇玩家
 	{
-		Room room = new Room(roomNum, userToken, rivalToken);
+		Room room = new Room(roomNum, userToken, rivalToken, dataBase);
 		roomNum++;
 		roomlist.add(room);
 		waitingPlayer.put(rivalToken, roomNum);
-
+		
 		// 給一個RoomNumber
 		return room.getRoomNum();
 	}

@@ -1,6 +1,6 @@
 DarkChess_Server
 ================
-FCU - SQA
+FCU - SQA Project
 
 
 License
